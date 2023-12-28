@@ -20,17 +20,14 @@ import lombok.Setter;
 
 @Table(name = "books")
 public class Book {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true)
     private String title;
     @Column(nullable = false)
     private String author;
-    @Column(nullable = false,unique = true)
+    @Column(nullable = false, unique = true, length = 2500)
     private String description;
     @Column(nullable = false)
     private String genre;
