@@ -1,24 +1,21 @@
 package com.book.springbootrestfulwebservices.controller;
 
-
 import com.book.springbootrestfulwebservices.entity.Book;
 import com.book.springbootrestfulwebservices.service.BookService;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@AllArgsConstructor
-
 @RequestMapping("/api/v1/books")
 public class BookController {
 
-    @Autowired
-    private BookService bookService;
+    private final BookService bookService;
+    public BookController(BookService bookService){
+        this.bookService = bookService;
+    }
+
     @PostMapping
     public ResponseEntity<Book> createBook(@RequestBody Book book){
         Book savedBook=bookService.createBook(book);
